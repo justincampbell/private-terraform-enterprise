@@ -3,7 +3,7 @@
 #------------------------------------------------------------------------------
 
 locals {
-  namespace = "${var.namespace}-pes"
+  namespace = "${var.namespace}"
 }
 
 resource "aws_instance" "pes" {
@@ -35,7 +35,7 @@ resource "aws_eip" "pes" {
 
 resource "aws_route53_record" "pes" {
   zone_id = "${var.hashidemos_zone_id}"
-  name    = "${local.namespace}.hashidemos.io."
+  name    = "${local.namespace}.hashicorp.fun."
   type    = "A"
   ttl     = "300"
   records = ["${aws_eip.pes.public_ip}"]
