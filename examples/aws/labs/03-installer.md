@@ -1,4 +1,4 @@
-Replicated Installer
+# Lab 3: Preflight Tool & Replicated Installer
 
 PTFE Preflight installer (how to)
 
