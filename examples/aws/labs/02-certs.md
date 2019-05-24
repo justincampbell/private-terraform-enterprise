@@ -4,6 +4,10 @@ Duration: 10 minutes
 
 There are two places where a customer may need to input certificate chain information during a PTFE Installation - for hostname resolution and for private CA trust for other service integration like VCS or SSO. For this purpose, we'll be logging into our new instance and creating an NGINX cert for PTFE to use.
 
+### Lab Overview
+
+- Task 1: SSH into your PTFE instance
+- Task 2: Install and configure Certbot
 
 ## Task 1: SSH into your instance
 
@@ -40,4 +44,8 @@ Certbot has an Nginx plugin, which is supported on many platforms, and automates
 $ sudo certbot --nginx
 ```
 
-Follow the prompts and enter the necessary information with your EIP being the hostname.
+Follow the prompts and enter the necessary information with your EIP being the hostname (`{namespace}.hashicorp.fun`).
+
+Navigate to the cert creation point and examine the certs you just created.
+
+`sudo su - cd etc/letsencrypt/live/{namespace}.hashicorp.fun`

@@ -2,9 +2,16 @@
 
 ## Prerequisites
 
-- BitBucket Server account
+- Bitbucket Server account
   - Email helpdesk@hashicorp.com for access
 - Ability to create SSH keys on your local machine
+
+### Lab Overview
+
+- Task 1: On PTFE, Add a VCS Provider
+- Task 2: On Bitbucket Server, Create a New Application Link
+- Task 3: On Workstation: Create an SSH Key for TFE
+- Task 4: On Bitbucket Server, Switch Users and Add an SSH Key
 
 ## Task 1: On PTFE, Add a VCS Provider
 
@@ -15,7 +22,7 @@ Open TFE in your browser and navigate to the "VCS Provider" settings for your or
     If you just created your organization, you might already be on this page. Otherwise:
 
     1. Click the upper-left organization menu, making sure it currently shows your organization.
-    2. Click the "Settings" link at the top of the page (or within the &#9776; menu)
+    2. Click the "Settings" link at the top of the page.
     3. On the next page, click "VCS Provider" in the left sidebar.
     4. Click the "Add VCS Provider" button.
 

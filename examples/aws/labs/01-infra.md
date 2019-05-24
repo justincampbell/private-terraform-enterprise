@@ -4,33 +4,51 @@ Duration: 20 minutes
 
 This lab will establish the underlying infrastructure for our PTFE setup. For more information on these requirements, please see the [Preflight Requirements](https://www.terraform.io/docs/enterprise/private/preflight-installer.html) and the [AWS Reference Architecture](https://www.terraform.io/docs/enterprise/private/aws-setup-guide.html).
 
-Prerequisites:
-- An AWS Account
-- Terraform locally installed
+### Course Prerequisites:
 - A Replicated Installer License
-- A HashiCorp BitBucket Server Account
+  - Follow [this guide](https://hashicorp.atlassian.net/wiki/spaces/SE/pages/142344369/Install+your+own+pTFE+Instance) before training begins.
 
-- Task 1: Clone the GitHub repo with the AWS Production External Services infrastructure
-- Task 2: Update your local variables
-- Task 3: Apply and note your instance information
 
-## Task 1: Clone the GitHub repo
+- Task 1: Connect to the Student Workstation
+- Task 2: Verify Terraform installation
+- Task 3: Generate your first Terraform Configuration
+- Task 4: Use the Terraform CLI to Get Help
+- Task 5: Apply and Update your Configuration
+
+## Task 1: Connect to the Student Workstation
 
 ### Step 1.1.1
 
-The GitHub repo we'll be working from is located at https://github.com/tr0njavolta/private-terraform-enterprise. Open your terminal and run the following command:
+SSH into your workstation using the provided credentials.
 
 ```shell
-git clone https://github.com/tr0njavolta/private-terraform-enterprise
+$ ssh <student_id>@<workstation_IP_address>
+password: <student_password>
 ```
 
-### Step 1.1.2
+When you are prompted, enter "yes" to continue connecting.
 
-Navigate to the `aws` folder and examine the `main.tf` file. Examine the deployment structure in the `aws/network` and `aws/pes` folders.
+On Windows, use an SSH client such as PuTTY.  On a Linux or Mac, use the Terminal to SSH into your workstation.
 
-## Task 2: Update your variables
+When you are prompted, enter the username and password provided by your instructor.
+
+## Task 2: Verify Terraform installation
 
 ### Step 1.2.1
+
+Run the following command to check the Terraform version:
+
+```shell
+$ terraform --version
+
+Terraform v0.11.7
+```
+
+## Task 3: Inspect your PTFE Infra Configuration
+
+Navigate to `/workstation/private-terraform/enterprise/examples/aws`.
+
+Examine the `main.tf` file. Examine the deployment structure in the `aws/network` and `aws/pes` folders.
 
 Once you've familiarized yourself with the deployment structure and the resources we'll be creating, edit the `terraform.tfvars.example` file with your own variables.
 
@@ -38,7 +56,7 @@ Once you've familiarized yourself with the deployment structure and the resource
 vim terraform.tfvars.example
 ```
 
-Below is an example of the variable file. The instructor will provide you with `aws_region` & `aws_instance_ami` values.
+Below is an example of the variable file. Leave the `aws_region` & `aws_instance_ami` values.
 
 ```hcl
 aws_region = "us-east-2"
@@ -47,13 +65,14 @@ aws_instance_type = "m5.large"
 public_key = "ssh-rsa AAAA... rachel@hashicorp.com"
 owner = "rachel"
 ttl = "-1"
-ssh_key_root = "res-ptfe"
 aws_instance_ami = "ami-055bccc85303a099d"
 ```
 
-## Task 3: Init & Apply
+Save the file as `terraform.tfvars`
 
-### Step 1.3.1
+## Task 4: Init & Apply
+
+### Step 1.4.1
 
 Once your variables are set, initialize Terraform in the `aws` directory.
 
@@ -67,7 +86,7 @@ Initializing provider plugins...
 Terraform has been successfully initialized!
 ```
 
-### Step 1.3.2
+### Step 1.4.2
 
 Apply your configuration and note the output you've received.
 
