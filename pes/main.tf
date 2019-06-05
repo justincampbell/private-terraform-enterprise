@@ -6,6 +6,13 @@ locals {
   namespace = "${var.namespace}"
 }
 
+resource "aws_key_pair" "pes" {
+
+ key_name = "${var.ssh_key_name}"
+
+ public_key = "${var.public_key}"
+}
+
 resource "aws_instance" "pes" {
   count                  = 2
   ami                    = "${var.aws_instance_ami}"
@@ -13,7 +20,6 @@ resource "aws_instance" "pes" {
   subnet_id              = "${element(var.subnet_ids, count.index)}"
   vpc_security_group_ids = ["${var.vpc_security_group_ids}"]
   key_name               = "${var.ssh_key_name}"
-  public_key             = "${var.public_key}"
   user_data              = "${var.user_data}"
   iam_instance_profile   = "${aws_iam_instance_profile.ptfe.name}"
 
