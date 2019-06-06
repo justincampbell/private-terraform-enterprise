@@ -48,4 +48,5 @@ Follow the prompts and enter the necessary information with your EIP being the h
 
 Navigate to the cert creation point and examine the certs you just created.
 
-`sudo su - cd etc/letsencrypt/live/{namespace}.hashicorp.fun`
+`$ sudo su -`
+`$ cd etc/letsencrypt/live/{namespace}.hashicorp.fun`
