@@ -5,9 +5,9 @@ Duration: 20 minutes
 This lab will establish the underlying infrastructure for our PTFE setup. For more information on these requirements, please see the [Preflight Requirements](https://www.terraform.io/docs/enterprise/private/preflight-installer.html) and the [AWS Reference Architecture](https://www.terraform.io/docs/enterprise/private/aws-setup-guide.html).
 
 ### Course Prerequisites:
-- A Replicated Installer License
-  - Follow [this guide](https://hashicorp.atlassian.net/wiki/spaces/SE/pages/142344369/Install+your+own+pTFE+Instance) before training begins.
-
+- A Replicated Installer License - If you do not have a replicated license, please contact [the helpdesk](helpdesk@hashicorp.com).
+- Ability to SSH into a workstation
+- Comfort with command line & understanding of Terraform
 
 - Task 1: Connect to the Student Workstation
 - Task 2: Verify Terraform installation
@@ -46,15 +46,17 @@ Terraform v0.11.7
 
 ## Task 3: Inspect your PTFE Infra Configuration
 
-Navigate to `/workstation/private-terraform/enterprise/examples/aws`.
+Navigate to `/workstation/private-terraform-enterprise`.
 
-Examine the `main.tf` file. Examine the deployment structure in the `aws/network` and `aws/pes` folders.
+Examine the `main.tf` file. Examine the deployment structure in the `/network` and `/pes` folders.
 
 Once you've familiarized yourself with the deployment structure and the resources we'll be creating, edit the `terraform.tfvars.example` file with your own variables.
 
 ```shell
 vim terraform.tfvars.example
 ```
+
+The public key we'll use is in `~/.ssh/id_rsa.pub`. Copy the contents of this file into the `public_key` variable here.
 
 Below is an example of the variable file. Leave the `aws_region` & `aws_instance_ami` values.
 

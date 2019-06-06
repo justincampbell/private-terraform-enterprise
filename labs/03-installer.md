@@ -60,20 +60,44 @@ Below is an example of the hcl file the preflight tool uses :
 
 ## Task 2: Create Necessary schemas on the PostgreSQL DB
 
+PTFE uses PostgreSQL to store logs and archive encrypted state files. In order to install PTFE, we need to prep the RDS DB we created first. On your PTFE instance, install the PostgreSQL package by running:
+ run the following commands with the output from `db_endpoint`:
+
+```shell
+sudo apt-get install postgresql
+```
+
+Once successfully installed, connect to the instance with the following command using the output from `db_endpoint` in your Terraform configuration:
+
+```
+sudo psql -h $DB_ENDPOINT -p 5432 -u ptfe
+```
+
+Once connected to the remote PostgreSQL instance, run the following commands:
+
 ```
 CREATE SCHEMA rails;
 CREATE SCHEMA vault;
 CREATE SCHEMA registry;
 ```
 
+Use `\q` to exit from the `psql` prompt.
+
 ## Task 3: Install logspout
 
+We will use logspout throughout this training to decipher logs generated while installing.
+
 ```shell
-$ docker pull gliderlabs/logspout:latest
-$ docker run -d --name="logspout" \
+$ sudo docker pull gliderlabs/logspout:latest
+$ sudo docker run -d --name="logspout" \
 	--volume=/var/run/docker.sock:/var/run/docker.sock \
 	--publish=127.0.0.1:8000:80 \
 	gliderlabs/logspout
+```
+
+To view these logs, you will want to create another terminal connection (ssh into your workstation, then into your PTFE instance from another terminal) and run this command to monitor logs throughout training:
+
+```
 $ curl http://127.0.0.1:8000/logs
 ```
 
