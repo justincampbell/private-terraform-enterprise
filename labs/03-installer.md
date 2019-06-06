@@ -61,7 +61,6 @@ Below is an example of the hcl file the preflight tool uses :
 ## Task 2: Create Necessary schemas on the PostgreSQL DB
 
 PTFE uses PostgreSQL to store logs and archive encrypted state files. In order to install PTFE, we need to prep the RDS DB we created first. On your PTFE instance, install the PostgreSQL package by running:
- run the following commands with the output from `db_endpoint`:
 
 ```shell
 sudo apt-get install postgresql
