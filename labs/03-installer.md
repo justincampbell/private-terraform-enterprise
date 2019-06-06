@@ -1,8 +1,10 @@
-# Lab 3: Preflight Tool & Replicated Installer
+# Lab 3: Preflight Steps & Replicated Installer
 
 - Task 1: Run the Preflight Installer
-- Task 2: Run the PTFE Installer
-- Task 3: Complete the UI Configuration
+- Task 2: Create Schemas on PostgreSQL
+- Task 3: Install logspout
+- Task 4: Run the PTFE Installer
+- Task 5: Complete the UI Configuration
 
 ## Task 1 : Run the Preflight Installer Tool
 PTFE Preflight installer (how to)
@@ -56,7 +58,26 @@ Below is an example of the hcl file the preflight tool uses :
 
  If you receive `|- ✗ ERROR: unable to listen on res-ptfe.hashicorp.fun:8800: listen tcp :8800: bind: address already in use`, run `sudo pkill nginx` and try again.
 
-## Task 2: Run the PTFE Installer
+## Task 2: Create Necessary schemas on the PostgreSQL DB
+
+```
+CREATE SCHEMA rails;
+CREATE SCHEMA vault;
+CREATE SCHEMA registry;
+```
+
+## Task 3: Install logspout
+
+```shell
+$ docker pull gliderlabs/logspout:latest
+$ docker run -d --name="logspout" \
+	--volume=/var/run/docker.sock:/var/run/docker.sock \
+	--publish=127.0.0.1:8000:80 \
+	gliderlabs/logspout
+$ curl http://127.0.0.1:8000/logs
+```
+
+## Task 4: Run the PTFE Installer
 
 From a shell on your instance:
 
@@ -66,7 +87,7 @@ The installation will take a few minutes and you'll be presented with a message 
 
 You will see a security warning when first connecting. Choose "Self-Signed Cert" and continue.
 
-## Task 3: Complete the UI Configuration
+## Task 5: Complete the UI Configuration
 
 Upload the license file provided to you in your setup email.
 
