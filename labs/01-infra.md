@@ -46,7 +46,7 @@ Terraform v0.11.7
 
 ## Task 3: Inspect your PTFE Infra Configuration
 
-Navigate to `/workstation/private-terraform-enterprise`.
+Navigate to `/workstation/ptfe`.
 
 Examine the `main.tf` file. Examine the deployment structure in the `/network` and `/pes` folders.
 
@@ -58,7 +58,7 @@ vim terraform.tfvars.example
 
 The public key we'll use is in `~/.ssh/id_rsa.pub`. Copy the contents of this file into the `public_key` variable here.
 
-Below is an example of the variable file. Leave the `aws_region` & `aws_instance_ami` values.
+Below is an example of the variable file. Leave the `aws_instance_type` & `ttl` values
 
 ```hcl
 aws_region = "us-east-2"
@@ -67,7 +67,6 @@ aws_instance_type = "m5.large"
 public_key = "ssh-rsa AAAA... rachel@hashicorp.com"
 owner = "rachel"
 ttl = "-1"
-aws_instance_ami = "ami-055bccc85303a099d"
 ```
 
 Save the file as `terraform.tfvars`
