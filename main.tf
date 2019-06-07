@@ -43,7 +43,7 @@ module "network" {
 module "pes" {
   source                 = "pes/"
   namespace              = "${var.namespace}"
-  aws_instance_ami       = "${var.aws_instance_ami}"
+  aws_instance_ami       = "${lookup(var.aws_instance_ami, var.aws_region)}"
   aws_instance_type      = "${var.aws_instance_type}"
   subnet_ids             = "${module.network.subnet_ids}"
   vpc_security_group_ids = "${module.network.security_group_id}"
