@@ -7,8 +7,15 @@ variable "namespace" {
 }
 
 variable "aws_instance_ami" {
-  description = "Amazon Machine Image ID"
+  type    = "map"
+  default = {
+    us-east-2 = "ami-055bccc85303a099d"
+    us-east-1 = "ami-00cd7c7e50f907643"
+    us-west-1 = "ami-0370ed85c86cb1e55"
+    us-west-2 = "ami-04dee29ccf39a0e40"
+  }
 }
+
 
 variable "aws_instance_type" {
   description = "EC2 instance type"

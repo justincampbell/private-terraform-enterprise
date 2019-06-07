@@ -15,7 +15,7 @@ resource "aws_key_pair" "pes" {
 
 resource "aws_instance" "pes" {
   count                  = 2
-  ami                    = "${var.aws_instance_ami}"
+  ami                    = "${lookup(var.aws_amis, var.aws_region)}"
   instance_type          = "${var.aws_instance_type}"
   subnet_id              = "${element(var.subnet_ids, count.index)}"
   vpc_security_group_ids = ["${var.vpc_security_group_ids}"]
