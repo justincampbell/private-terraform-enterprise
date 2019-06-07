@@ -6,7 +6,7 @@ variable "namespace" {
   description = "Unique name to use for DNS and resource naming"
 }
 
-variable "aws_instance_ami" {
+variable "images" {
   type    = "map"
   default = {
     us-east-2 = "ami-055bccc85303a099d"
